@@ -1,0 +1,402 @@
+:root {
+  --bg-gradient-start: #1e1b4b;
+  --bg-gradient-end: #0f172a;
+  --accent: #7c3aed;
+  --accent-soft: rgba(124, 58, 237, 0.3);
+  --text-primary: #f8fafc;
+  --text-muted: rgba(248, 250, 252, 0.7);
+  --card-bg: rgba(15, 23, 42, 0.65);
+  --border-color: rgba(148, 163, 184, 0.2);
+  --shadow-color: rgba(15, 23, 42, 0.35);
+  --success: #22c55e;
+  --warning: #facc15;
+  --danger: #f97316;
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at 20% 20%, rgba(124, 58, 237, 0.25), transparent 45%),
+    radial-gradient(circle at 80% 0%, rgba(14, 165, 233, 0.25), transparent 50%),
+    linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+  color: var(--text-primary);
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+.background-gradient {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 10% 80%, rgba(14, 165, 233, 0.15), transparent 55%),
+    radial-gradient(circle at 85% 45%, rgba(236, 72, 153, 0.12), transparent 50%);
+  z-index: -1;
+  filter: blur(40px);
+}
+
+.layout {
+  width: min(1120px, 100%);
+  display: grid;
+  gap: 2.5rem;
+}
+
+.hero {
+  max-width: 720px;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.hero h1 {
+  font-size: clamp(2.75rem, 4vw + 1rem, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.hero p {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.generator {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  box-shadow: 0 25px 65px -25px var(--shadow-color);
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  display: grid;
+  gap: 2rem;
+}
+
+.display {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.display__input {
+  flex: 1 1 260px;
+  border: none;
+  border-radius: 16px;
+  padding: 1rem 1.4rem;
+  font-family: 'Fira Code', 'Source Code Pro', monospace;
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+  background: rgba(15, 23, 42, 0.9);
+  color: var(--text-primary);
+  box-shadow: inset 0 0 0 1px var(--border-color);
+}
+
+.display__input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.btn {
+  border: none;
+  border-radius: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  font-size: 0.95rem;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 3px;
+}
+
+.btn--primary {
+  color: #0f172a;
+  background: var(--accent);
+  box-shadow: 0 12px 30px -15px rgba(124, 58, 237, 0.7);
+}
+
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px -16px rgba(124, 58, 237, 0.6);
+}
+
+.btn--ghost {
+  color: var(--text-primary);
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--border-color);
+}
+
+.btn--ghost:hover {
+  background: var(--accent-soft);
+}
+
+.btn.is-copied {
+  background: rgba(34, 197, 94, 0.14);
+  color: var(--success);
+  box-shadow: inset 0 0 0 1px rgba(34, 197, 94, 0.55);
+}
+
+.btn.is-copied .btn__icon {
+  color: var(--success);
+}
+
+.btn.is-copied:hover {
+  transform: none;
+  box-shadow: inset 0 0 0 1px rgba(34, 197, 94, 0.55);
+}
+
+.btn__icon {
+  font-size: 1.1rem;
+}
+
+.strength {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.strength__label {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  color: var(--text-muted);
+}
+
+.strength__value {
+  font-weight: 600;
+}
+
+.strength__bar {
+  height: 12px;
+  background: rgba(148, 163, 184, 0.2);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.strength__indicator {
+  display: block;
+  width: 25%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--warning);
+  transform-origin: left;
+  transition: width 200ms ease, background-color 200ms ease;
+}
+
+.controls {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.control {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.control__label {
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+}
+
+.control__range {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--accent);
+}
+
+output {
+  font-weight: 600;
+  font-size: 1.1rem;
+  min-width: 2rem;
+  text-align: right;
+}
+
+.control--grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.75rem 0.9rem;
+  background: rgba(15, 23, 42, 0.55);
+  border-radius: 12px;
+  box-shadow: inset 0 0 0 1px transparent;
+  transition: box-shadow 150ms ease, transform 150ms ease, background-color 150ms ease;
+}
+
+.checkbox input[type="checkbox"] {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--accent);
+}
+
+.checkbox:hover {
+  box-shadow: inset 0 0 0 1px var(--accent);
+  transform: translateY(-1px);
+}
+
+.password-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.password-list__placeholder {
+  margin: 0;
+  padding: 0.9rem 1.1rem;
+  border-radius: 12px;
+  background: rgba(148, 163, 184, 0.12);
+  color: var(--text-muted);
+}
+
+.password-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.95rem 1.1rem;
+  background: rgba(15, 23, 42, 0.85);
+  border-radius: 14px;
+  box-shadow: inset 0 0 0 1px rgba(124, 58, 237, 0.15);
+  font-family: "Fira Code", "Source Code Pro", monospace;
+  letter-spacing: 0.05em;
+  font-size: 0.95rem;
+}
+
+.password-card__index {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.password-card__value {
+  word-break: break-all;
+  color: var(--text-primary);
+}
+
+.password-card button {
+  background: rgba(124, 58, 237, 0.16);
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 10px;
+  transition: background-color 150ms ease, color 150ms ease, transform 150ms ease;
+}
+
+.password-card button:hover {
+  background: rgba(124, 58, 237, 0.28);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+.password-card__copy.is-copied {
+  background: rgba(34, 197, 94, 0.2);
+  color: var(--success);
+}
+
+.password-card button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+.tips {
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(124, 58, 237, 0.12);
+  border-radius: 20px;
+  padding: 1.8rem 2rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.tips h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.tips ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.tips li::marker {
+  color: var(--accent);
+}
+
+.tips li + li {
+  margin-top: 0.5rem;
+}
+
+.footer {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+@media (min-width: 1024px) {
+  .layout {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .hero {
+    max-width: none;
+    padding-right: 1.5rem;
+  }
+
+  .tips {
+    align-self: start;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 2rem 1rem 3rem;
+  }
+
+  .generator {
+    padding: 1.5rem;
+  }
+
+  .control--grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
