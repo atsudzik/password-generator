@@ -263,7 +263,7 @@ const handleGenerate = (event) => {
     strengthBar.style.width = '10%';
     strengthBar.style.background = 'var(--danger)';
     passwordOutput.value = error.message;
-    passwordList.innerHTML = '<p class=\"password-list__placeholder\">Adjust your settings to generate a password.</p>';
+    passwordList.innerHTML = '<p class="password-list__placeholder">Adjust your settings to generate a password.</p>';
   }
 };
 
