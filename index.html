@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Generate strong, customizable passwords in a beautifully crafted one-page experience." />
+    <title>NovaPass Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="background-gradient"></div>
+    <main class="layout">
+      <header class="hero">
+        <h1>NovaPass</h1>
+        <p>Create resilient passwords in seconds. Fine-tune the ingredients, assess the strength, and copy with a single click.</p>
+      </header>
+
+      <section class="generator">
+        <div class="display">
+          <input id="passwordOutput" class="display__input" type="text" readonly aria-label="Generated password" />
+          <button id="copyButton" class="btn btn--ghost" type="button" aria-label="Copy password to clipboard">
+            <span class="btn__icon" aria-hidden="true">📋</span>
+            <span class="btn__text">Copy</span>
+          </button>
+        </div>
+
+        <div class="strength" aria-live="polite">
+          <span class="strength__label">Strength</span>
+          <span id="strengthValue" class="strength__value">Waiting...</span>
+          <div class="strength__bar" role="img" aria-label="Password strength visualization">
+            <span id="strengthBar" class="strength__indicator"></span>
+          </div>
+        </div>
+
+        <form id="generatorForm" class="controls" autocomplete="off">
+          <div class="control">
+            <label for="length" class="control__label">Password length</label>
+            <div class="control__range">
+              <input id="length" type="range" min="8" max="64" value="16" />
+              <output id="lengthValue" for="length">16</output>
+            </div>
+          </div>
+
+          <fieldset class="control control--grid">
+            <legend class="control__label">Character set</legend>
+            <label class="checkbox">
+              <input id="uppercase" type="checkbox" checked />
+              <span>Uppercase (A-Z)</span>
+            </label>
+            <label class="checkbox">
+              <input id="lowercase" type="checkbox" checked />
+              <span>Lowercase (a-z)</span>
+            </label>
+            <label class="checkbox">
+              <input id="numbers" type="checkbox" checked />
+              <span>Numbers (0-9)</span>
+            </label>
+            <label class="checkbox">
+              <input id="symbols" type="checkbox" />
+              <span>Symbols (!@#$)</span>
+            </label>
+            <label class="checkbox">
+              <input id="ambiguous" type="checkbox" />
+              <span>Exclude ambiguous characters</span>
+            </label>
+          </fieldset>
+
+          <div class="control">
+            <label for="quantity" class="control__label">How many passwords?</label>
+            <div class="control__range">
+              <input id="quantity" type="range" min="1" max="5" value="1" />
+              <output id="quantityValue" for="quantity">1</output>
+            </div>
+          </div>
+
+          <button class="btn btn--primary" type="submit">Generate</button>
+        </form>
+
+        <div id="passwordList" class="password-list" aria-live="polite">
+          <p class="password-list__placeholder">Your generated passwords will appear here.</p>
+        </div>
+      </section>
+
+      <section class="tips">
+        <h2>Good password hygiene</h2>
+        <ul>
+          <li>Use a unique password for every account.</li>
+          <li>Store passwords in a secure password manager.</li>
+          <li>Enable multi-factor authentication wherever possible.</li>
+          <li>Refresh your most sensitive passwords a few times a year.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Crafted with care to keep your digital life protected.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
